@@ -1,19 +1,21 @@
 package TP5;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
-public class Principal extends JFrame {	
-	 
-	 public Principal() {
-	        setTitle("Programa");
-	        setSize(400, 300);
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setLayout(null);
-	        setLocationRelativeTo(null);	        
+public class Principal extends JFrame {
+	
+	   public static void main(String[] args) {
+	        EventQueue.invokeLater(new Runnable() {
+	            public void run() {
+	                try {
+	                    VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+	                    ventanaPrincipal.setVisible(true);
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        });
 	    }
-
-	public static void main(String[] args) {
-		 Principal ventana = new Principal();
-	        ventana.setVisible(true);
-	}
 }
