@@ -1,0 +1,55 @@
+package TP5;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.Font;
+
+public class PanelAgregarPeliculas extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtNombre;
+	private JLabel lblID ;
+	private JComboBox<Categorias> cbGenero ;
+	private JLabel lblGenero ;
+	private JLabel lblNombre ;
+	private JButton btnAceptar; 
+
+	
+	public PanelAgregarPeliculas() {
+		setLayout(null);
+		
+		lblID = new JLabel("ID");
+		lblID.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblID.setBounds(68, 80, 46, 14);
+		add(lblID);
+		
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNombre.setBounds(67, 122, 60, 14);
+		add(lblNombre);
+		
+		lblGenero = new JLabel("Genero");
+		lblGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblGenero.setBounds(68, 174, 60, 14);
+		add(lblGenero);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(179, 120, 144, 20);
+		add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		cbGenero = new JComboBox<Categorias>();
+		cbGenero.setBounds(179, 171, 144, 22);
+		add(cbGenero);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnAceptar.setBounds(82, 223, 89, 23);
+		add(btnAceptar);
+
+	}
+
+}

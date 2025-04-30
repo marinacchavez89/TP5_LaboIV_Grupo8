@@ -12,8 +12,6 @@ public class Principal extends JFrame {
 	                try {
 	                    VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
 	                    ventanaPrincipal.setVisible(true);
-	                    VentanaAgregar ventanaAgregar = new VentanaAgregar();
-	                    ventanaAgregar.setVisible(true);
 	                } catch (Exception e) {
 	                    e.printStackTrace();
 	                }
