@@ -2,11 +2,14 @@ package TP5;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class PanelAgregarPeliculas extends JPanel {
@@ -26,7 +29,7 @@ public class PanelAgregarPeliculas extends JPanel {
 		return  cont++;
 	}
 	
-	
+	private static final List <Peliculas> catalogo = new ArrayList<>();
 	public PanelAgregarPeliculas() {
 		setLayout(null);
 		
@@ -63,11 +66,22 @@ public class PanelAgregarPeliculas extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				devuelveProximoId();
+				if(!esFormValido())
+				{
+					return;
+				}
+				
+				int id = devuelveProximoId();
+				String nombre = txtNombre.getText().trim();
+				Categorias cat = (Categorias) cbGenero.getSelectedItem();
+				
+				Peliculas peli = new Peliculas(id, nombre, cat);
+				catalogo.add(peli);
 				lblIdAutoincremental.setText(String.valueOf(cont));
-				limpiarFormulario();
+							
 			}
 		});
+		
 		
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAceptar.setBounds(82, 223, 89, 23);
@@ -75,11 +89,31 @@ public class PanelAgregarPeliculas extends JPanel {
 		
 		lblIdAutoincremental = new JLabel(String.valueOf(cont));
 		lblIdAutoincremental.setBounds(179, 81, 46, 14);
-		add(lblIdAutoincremental);
-				
+		add(lblIdAutoincremental);		
 	}
-	public void limpiarFormulario() {
-		txtNombre.setText("");
-		cbGenero.setSelectedIndex(0);
+
+	private boolean esFormValido() {
+	    if (txtNombre.getText().trim().isEmpty()) {
+	        JOptionPane.showMessageDialog(
+	            this,
+	            "El campo «Nombre» no puede estar vacío.",
+	            "Validación",
+	            JOptionPane.WARNING_MESSAGE
+	        );
+	        txtNombre.requestFocus();
+	        return false;
+	    }
+	    if (cbGenero.getSelectedIndex() == 0) {
+	        JOptionPane.showMessageDialog(
+	            this,
+	            "Debe seleccionar un género.",
+	            "Validación",
+	            JOptionPane.WARNING_MESSAGE
+	        );
+	        cbGenero.requestFocus();
+	        return false;
+	    }
+	    return true;
 	}
+
 }
