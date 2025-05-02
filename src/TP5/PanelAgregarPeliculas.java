@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelAgregarPeliculas extends JPanel {
 
@@ -16,7 +18,13 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblGenero ;
 	private JLabel lblNombre ;
 	private JButton btnAceptar; 
+	private JLabel lblIdAutoincremental;
+	private static int cont = 1;
 
+	public static int devuelveProximoId()
+	{
+		return  cont++;
+	}
 	
 	public PanelAgregarPeliculas() {
 		setLayout(null);
@@ -46,10 +54,20 @@ public class PanelAgregarPeliculas extends JPanel {
 		add(cbGenero);
 		
 		btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				devuelveProximoId();
+				lblIdAutoincremental.setText(String.valueOf(cont));
+			}
+		});
+		
 		btnAceptar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAceptar.setBounds(82, 223, 89, 23);
 		add(btnAceptar);
-
+		
+		lblIdAutoincremental = new JLabel(String.valueOf(cont));
+		lblIdAutoincremental.setBounds(179, 81, 46, 14);
+		add(lblIdAutoincremental);
+				
 	}
-
 }
