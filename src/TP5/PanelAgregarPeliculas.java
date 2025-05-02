@@ -45,13 +45,19 @@ public class PanelAgregarPeliculas extends JPanel {
 		add(lblGenero);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(179, 120, 144, 20);
+		txtNombre.setBounds(179, 120, 163, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		cbGenero = new JComboBox<Categorias>();
-		cbGenero.setBounds(179, 171, 144, 22);
+		cbGenero.setBounds(179, 171, 163, 22);
 		add(cbGenero);
+		
+		cbGenero.addItem(new Categorias("Seleccione un genero"));
+		cbGenero.addItem(new Categorias("Terror"));
+		cbGenero.addItem(new Categorias("Accion"));
+		cbGenero.addItem(new Categorias("Suspenso"));
+		cbGenero.addItem(new Categorias("Romantica"));
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
