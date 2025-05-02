@@ -26,6 +26,7 @@ public class PanelAgregarPeliculas extends JPanel {
 		return  cont++;
 	}
 	
+	
 	public PanelAgregarPeliculas() {
 		setLayout(null);
 		
@@ -64,6 +65,7 @@ public class PanelAgregarPeliculas extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				devuelveProximoId();
 				lblIdAutoincremental.setText(String.valueOf(cont));
+				limpiarFormulario();
 			}
 		});
 		
@@ -75,5 +77,9 @@ public class PanelAgregarPeliculas extends JPanel {
 		lblIdAutoincremental.setBounds(179, 81, 46, 14);
 		add(lblIdAutoincremental);
 				
+	}
+	public void limpiarFormulario() {
+		txtNombre.setText("");
+		cbGenero.setSelectedIndex(0);
 	}
 }
