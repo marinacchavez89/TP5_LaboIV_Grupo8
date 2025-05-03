@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -20,8 +21,12 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem JMenuItemAgregar;
 	private JMenuItem JMenuItemListar;
 	private JPanel contentPane;
+	private DefaultListModel<Peliculas> modeloPeliculas; // modelo compartido entre paneles
 	
 	public VentanaPrincipal() {
+		// Inicializamos el modelo para las películas
+		modeloPeliculas = new DefaultListModel<Peliculas>();
+		
         setTitle("Programa");
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,12 +47,12 @@ public class VentanaPrincipal extends JFrame {
         JMenuItemAgregar = new JMenuItem("Agregar");
         JMenuItemAgregar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		contentPane.removeAll();
-        		PanelAgregarPeliculas panelAgregarPeli = new PanelAgregarPeliculas();
-        		contentPane.add(panelAgregarPeli);
-        		contentPane.repaint();
-        		contentPane.revalidate();
-        	}
+                contentPane.removeAll();
+                PanelAgregarPeliculas panelAgregarPeli = new PanelAgregarPeliculas(modeloPeliculas); // se pasa el modelo
+                contentPane.add(panelAgregarPeli);
+                contentPane.revalidate();
+                contentPane.repaint();
+            }
         });
        
         JMenuPeliculas.add(JMenuItemAgregar);
@@ -55,14 +60,16 @@ public class VentanaPrincipal extends JFrame {
         JMenuItemListar = new JMenuItem("Listar");
         JMenuItemListar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		contentPane.removeAll();
-        		PanelListarPeliculas panelListarPeli = new PanelListarPeliculas();
-        		contentPane.add(panelListarPeli);
-        		contentPane.repaint();
-        		contentPane.revalidate();
+        		// Cambiar el panel a ListarPeliculas
+				contentPane.removeAll();
+				PanelListarPeliculas panelListar = new PanelListarPeliculas(modeloPeliculas);  // Pasamos el modelo
+				contentPane.add(panelListar);
+				contentPane.revalidate();
+				contentPane.repaint();
         	}        	
         });
       
         JMenuPeliculas.add(JMenuItemListar);
+        
     }
 }

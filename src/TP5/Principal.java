@@ -6,7 +6,12 @@ import javax.swing.JFrame;
 
 public class Principal extends JFrame {
 	
-	   public static void main(String[] args) {
+	   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) {
 	        EventQueue.invokeLater(new Runnable() {
 	            public void run() {
 	                try {
