@@ -35,6 +35,6 @@ public class Peliculas {
     }
     @Override
 	public String toString() {
-		return "Peliculas [titulo=" + titulo + ", categoria=" + categoria + ", id=" + id + "]";
+		return id+ "- " + "Nombre: "+ titulo +",  Genero: " + categoria;
 	}
 }
