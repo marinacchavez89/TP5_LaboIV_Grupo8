@@ -7,6 +7,10 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class PanelListarPeliculas extends JPanel {
@@ -22,7 +26,6 @@ public class PanelListarPeliculas extends JPanel {
 	public PanelListarPeliculas(DefaultListModel<Peliculas> modeloPeliculas) {
 		this.modeloPeliculas = modeloPeliculas;
 		setLayout(null);
-
 	
 		lblTitulo= new JLabel("Peliculas");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -30,6 +33,7 @@ public class PanelListarPeliculas extends JPanel {
 		lblTitulo.setBounds(20, 20, 200, 20);
 		add(lblTitulo);
 		
+		OrdenarPeliculas();
 		listaPeliculas = new JList();
 		listaPeliculas.setFont(new Font("Arial", Font.PLAIN, 14));
 		//asigno el modelo compartido
@@ -41,5 +45,14 @@ public class PanelListarPeliculas extends JPanel {
 		add(scrollPane);
 		
 	}
+	private void OrdenarPeliculas() {
+		List <Peliculas> nuevalista = new ArrayList<>();
+		for (int i=0; i<modeloPeliculas.getSize();i++)
+			nuevalista.add(modeloPeliculas.getElementAt(i));
+		
+		Collections.sort(nuevalista,Comparator.comparing(Peliculas::getTitulo, String.CASE_INSENSITIVE_ORDER));
+		modeloPeliculas.clear();
+		nuevalista.forEach(modeloPeliculas::addElement);
+		}
 	
 }

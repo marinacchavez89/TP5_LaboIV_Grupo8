@@ -60,8 +60,8 @@ public class VentanaPrincipal extends JFrame {
         JMenuItemListar = new JMenuItem("Listar");
         JMenuItemListar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		// Cambiar el panel a ListarPeliculas
-				contentPane.removeAll();
+        		// Cambiar el panel a ListarPeliculas				
+        		contentPane.removeAll();
 				PanelListarPeliculas panelListar = new PanelListarPeliculas(modeloPeliculas);  // Pasamos el modelo
 				contentPane.add(panelListar);
 				contentPane.revalidate();
