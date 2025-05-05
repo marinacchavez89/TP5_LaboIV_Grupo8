@@ -136,6 +136,14 @@ public class PanelAgregarPeliculas extends JPanel {
 
 					// Agrega al modelo compartido
 					modeloPeliculas.addElement(peli);
+					
+					// Muestro un mensaje de éxito en cada peli agregada correctamente.
+					JOptionPane.showMessageDialog(
+					    PanelAgregarPeliculas.this,
+					    "La película \"" + nombre + "\" fue agregada correctamente.",
+					    "Éxito",
+					    JOptionPane.INFORMATION_MESSAGE
+					);
 
 					lblIdAutoincremental.setText(String.valueOf(cont));
 					txtNombre.setText("");
